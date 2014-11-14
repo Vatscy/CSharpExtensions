@@ -41,6 +41,22 @@ namespace DoItYourself.Tests.Extensions
 			});
 		}
 
+		[TestMethod]
+		public void Chunk3()
+		{
+			MeasureTime(() =>
+			{
+				var total = 0;
+				var items = GetRange(1000).Chunk3(9);
+				foreach (var item in items)
+					foreach (var i in item)
+					{
+						total += i;
+					}
+				Console.WriteLine(total);
+			});
+		}
+
 		private void MeasureTime(Action action)
 		{
 			var watch = new Stopwatch();
