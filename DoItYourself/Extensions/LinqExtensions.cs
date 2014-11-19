@@ -8,13 +8,13 @@ namespace System.Linq
 	public static class LinqExtensions
 	{
 		/// <summary>
-		/// 
+		/// シーケンスを指定したサイズの子シーケンスに分割します。
 		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="items"></param>
-		/// <param name="size"></param>
-		/// <returns></returns>
-		public static IEnumerable<IEnumerable<T>> Chunk<T>(this IEnumerable<T> items, int size)
+		/// <typeparam name="T">要素の型</typeparam>
+		/// <param name="items">シーケンス</param>
+		/// <param name="size">分割サイズ</param>
+		/// <returns>分割された子シーケンスのシーケンス</returns>
+		public static IEnumerable<IList<T>> Chunk<T>(this IEnumerable<T> items, int size)
 		{
 			var list = new List<T>(size);
 			foreach (var item in items)
