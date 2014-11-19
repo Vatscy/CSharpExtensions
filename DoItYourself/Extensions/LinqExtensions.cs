@@ -31,14 +31,5 @@ namespace System.Linq
 				yield return list;
 			}
 		}
-
-		public static IEnumerable<IEnumerable<T>> Chunk2<T>(this IEnumerable<T> items, int size)
-		{
-			while (items.Any())
-			{
-				yield return items.Take(size);
-				items = items.Skip(size);
-			}
-		}
 	}
 }
