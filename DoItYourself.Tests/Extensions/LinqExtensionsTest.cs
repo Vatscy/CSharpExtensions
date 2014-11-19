@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -12,7 +11,7 @@ namespace DoItYourself.Tests.Extensions
 		[TestMethod]
 		public void Chunk()
 		{
-			MeasureTime(() =>
+			var time = Utility.Time(() =>
 			{
 				var total = 0;
 				var items = GetRange(1000).Chunk(9);
@@ -23,15 +22,7 @@ namespace DoItYourself.Tests.Extensions
 					}
 				Console.WriteLine(total);
 			});
-		}
-
-		private void MeasureTime(Action action)
-		{
-			var watch = new Stopwatch();
-			watch.Start();
-			action();
-			watch.Stop();
-			Console.WriteLine("result: {0}ms", watch.ElapsedMilliseconds);
+			Console.WriteLine("result: {0}ms", time);
 		}
 
 		private IEnumerable<int> GetRange(int count)
