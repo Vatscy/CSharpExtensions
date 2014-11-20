@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using DoItYourself.Extensions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace DoItYourself.Tests.Extensions
 {
-	[TestClass]
+	[TestFixture]
 	public class LinqExtensionsTest
 	{
 		private class Test
@@ -17,7 +17,7 @@ namespace DoItYourself.Tests.Extensions
 
 		private static readonly List<Test> Source = Enumerable.Range(0, 10000).Select(s => new Test { Id = s, Name = s.ToString("00000") }).ToList();
 
-		[TestMethod]
+		[Test]
 		public void AreUnique()
 		{
 			Utility.Time(() =>
@@ -26,7 +26,7 @@ namespace DoItYourself.Tests.Extensions
 			}).ConsoleWriteLine("result: {0}ms");
 		}
 
-		[TestMethod]
+		[Test]
 		public void Chunk()
 		{
 			Utility.Time(() =>
