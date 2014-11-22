@@ -1,6 +1,5 @@
-﻿using System;
-
-namespace DoItYourself.Extensions
+﻿
+namespace System
 {
     public static class ObjectExtensions
     {
