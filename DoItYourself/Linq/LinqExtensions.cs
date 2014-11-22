@@ -118,5 +118,30 @@ namespace System.Linq
             }
             return new CircularEnumerableIterator<TSource>(source);
         }
+
+        /// <summary>
+        /// シーケンスの先頭から、指定された長さだけ要素を返します。
+        /// 要素数が足りない場合はデフォルト値を返します。
+        /// </summary>
+        /// <param name="source">シーケンス</param>
+        /// <param name="length">長さ</param>
+        /// <typeparam name="TSource">要素の型</typeparam>
+        /// <returns>指定された長さのシーケンス</returns>
+        public static IEnumerable<TSource> Fix<TSource>(this IEnumerable<TSource> source, int length)
+        {
+            var count = 0;
+
+            foreach (var s in source.Take(length))
+            {
+                yield return s;
+                count++;
+            }
+
+            while (count < length)
+            {
+                yield return default(TSource);
+                count++;
+            }
+        }
     }
 }

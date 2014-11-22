@@ -82,5 +82,36 @@ namespace DoItYourself.Tests.Linq
             List<int> list = null;
             list.Cycle();
         }
+
+        [Test]
+        public void Fix_長さ0を指定_空シーケンスが返る()
+        {
+            var list = new[] { 1, 2, 3 };
+            Assert.That(list.Fix(0).Any(), Is.False);
+        }
+
+        [Test]
+        public void Fix_元シーケンスより短い長さを指定_指定した長さのシーケンスが返る()
+        {
+            var list = new[] { 1, 2, 3 };
+            CollectionAssert.AreEqual(list.Fix(2), new[]{ 1, 2 });
+        }
+
+        [Test]
+        public void Fix_元シーケンスと同じ長さを指定_指定した長さのシーケンスが返る()
+        {
+            var list = new[] { 1, 2, 3 };
+            CollectionAssert.AreEqual(list.Fix(3), new[]{ 1, 2, 3 });
+        }
+
+        [Test]
+        public void Fix_元シーケンスより長い長さを指定_指定した長さのシーケンスが返る()
+        {
+            var list = new[] { 1, 2, 3 };
+            CollectionAssert.AreEqual(list.Fix(4), new[]{ 1, 2, 3, 0 });
+
+            var list2 = new[] { "a", "b", "c" };
+            CollectionAssert.AreEqual(list2.Fix(5), new [] { "a", "b", "c", null, null });
+        }
     }
 }
