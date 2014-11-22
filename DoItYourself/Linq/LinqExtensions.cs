@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DoItYourself.Linq;
 
 namespace System.Linq
 {
@@ -101,6 +102,21 @@ namespace System.Linq
                 set.Add(element);
             }
             return true;
+        }
+
+        /// <summary>
+        /// シーケンスを無限につなげたシーケンスを生成します。
+        /// </summary>
+        /// <param name="source">シーケンス</param>
+        /// <typeparam name="TSource">要素の型</typeparam>
+        /// <returns>無限シーケンス</returns>
+        public static IEnumerable<TSource> Cycle<TSource>(this IEnumerable<TSource> source)
+        {
+            if (source == null)
+            {
+                throw new NullReferenceException();
+            }
+            return new CircularEnumerableIterator<TSource>(source);
         }
     }
 }

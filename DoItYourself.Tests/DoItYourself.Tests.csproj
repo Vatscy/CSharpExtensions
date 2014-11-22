@@ -36,14 +36,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions\LinqExtensionsTest.cs" />
+    <Compile Include="Linq\LinqExtensionsTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Extensions\" />
+    <Folder Include="Linq\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DoItYourself\DoItYourself.csproj">
