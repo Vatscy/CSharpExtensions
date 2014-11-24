@@ -46,7 +46,7 @@
     <Compile Include="Utility.cs" />
     <Compile Include="Linq\LinqExtensions.cs" />
     <Compile Include="Linq\EnumerableIterator.cs" />
-    <Compile Include="Linq\CircularEnumerableIterator.cs" />
+    <Compile Include="Extensions\DelegateExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

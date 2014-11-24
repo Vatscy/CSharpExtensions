@@ -116,7 +116,24 @@ namespace System.Linq
             {
                 throw new NullReferenceException();
             }
-            return new CircularEnumerableIterator<TSource>(source);
+
+            if (!source.Any())
+            {
+                return new TSource[0];
+            }
+
+            return EnumerateInfinitely(source);
+        }
+
+        private static IEnumerable<TSource> EnumerateInfinitely<TSource>(IEnumerable<TSource> source)
+        {
+            while (true)
+            {
+                foreach (var item in source)
+                {
+                    yield return item;
+                }
+            }
         }
 
         /// <summary>
