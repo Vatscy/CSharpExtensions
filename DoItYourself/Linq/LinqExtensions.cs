@@ -33,6 +33,12 @@ namespace System.Linq
             }
         }
 
+        public static IEnumerable<IEnumerable<T>> Chunk2<T>(this IEnumerable<T> source, int size)
+        {
+            var lookup = source.Select((item, index) => new {Item = item, Index = index}).ToLookup(x => x.Index / size, x => x.Item);
+            return lookup;
+        }
+
         /// <summary>
         /// シーケンスの要素に重複がないかどうかを判断します。
         /// </summary>

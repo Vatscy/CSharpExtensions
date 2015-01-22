@@ -113,5 +113,37 @@ namespace DoItYourself.Tests.Linq
             var list2 = new[] { "a", "b", "c" };
             CollectionAssert.AreEqual(list2.Fix(5), new [] { "a", "b", "c", null, null });
         }
+
+        [Test]
+        public void tttttttttt()
+        {
+            var list = Enumerable.Range(0, 1000);
+            var list2 = Enumerable.Range(0, 1000).ToArray();
+            Utility.Time(() =>
+            {
+                foreach (var i in Partition(list, 3)) {
+                    foreach (var j in i) {
+
+                    }
+                }
+            }).ConsoleWriteLine("1: {0}");
+            Utility.Time(() =>
+                {
+                    foreach (var i in Partition(list2, 3)) {
+                        foreach (var j in i) {
+
+                        }
+                    }
+                }).ConsoleWriteLine("2: {0}");
+        }
+
+        public IEnumerable<IEnumerable<T>> Partition<T>(IEnumerable<T> source, int size)
+        {
+            while (source.Any())
+            {
+                yield return source.Take(size);
+                source = source.Skip(size);
+            }
+        }
     }
 }
